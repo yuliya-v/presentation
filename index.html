@@ -18,38 +18,58 @@
 			<div class="slides">
 				<section>
 					<h1 style="margin-bottom: 50px;">History API</h1>
-					<small>Created by <a href="#hh">Yuliya Volchek</a></small>
+					<small>Created by <a href="https://github.com/yuliya-v" target="_blank">Yuliya Volchek</a></small>
 				</section>
 
-				<!-- <section>
+				<section>
 					<h2>Plan:</h2>
 					<ul>
-						<li>What is History API?</li>
-						<li>Why do we use it?</li>
-						<li>What we used before?</li>
-						<li>How do we use it</li>
+						<li>Basics</li>
+						<li>History API in SPA</li>
+						<li>pushState() and replaceState()</li>
+						<li>Routing</li>
 					</ul>
-				</section> -->
+				</section>
 				<section>
 
 					<section>
-						<p>The <bold>HTML5 history API</bold></p>
+						<h3>history API</h3>
+						<!-- <p>The history is a JavaScript object available in window object, which contains details about the browser session history of the tab</p> -->
 						<p>a standardized way to manipulate the browser history via script</p>
 					</section>
 
 
 					<section>
+						<h3>history object</h3>
 						<figure style="height: 55vh;">
 							<img src="./img/console.png" alt="history object">
 						</figure>
-						<figcaption> The methods available to manipulate the browser’s history</figcaption>
+					</section>
+
+					<section>
+						<pre class="fragment"><code data-trim data-noescape>
+					history.length
+						</code></pre>
+						<small class="fragment"> => the number of pages in the history stack</small>
+						<pre class="fragment"><code data-trim data-noescape>
+					history.back()
+						</code></pre>
+						<small class="fragment"> => move back one page in the session history</small>
+						<pre class="fragment"><code data-trim data-noescape>
+					history.forward()
+						</code></pre>
+						<small class="fragment"> => move forward one page in the session history</small>
+					</section>
+
+					<section>
+						<img src="./img/history.png" alt="history object">
 					</section>
 
 				</section>
-				<!-- <section>
+				<section>
 
 					<section>
-						<p>Why?</p>
+						<p>MPA vs. SPA</p>
 						<img src="./img/spa.jpg" alt="spa">
 					</section>
 
@@ -64,7 +84,7 @@
 					</section>
 
 				</section>
-				<section>
+				<!-- <section>
 					<p>Thank You!</p>
 				</section> -->
 			</div>
