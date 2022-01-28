@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/sky.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1 style="margin-bottom: 50px;">History API</h1>
+					<small>Yuliya Volchek 2022 <a href="#hh">KKK</a></small>
+					
+				</section>
+				<section>
+					<h2>Plan:</h2>
+					<ul>
+						<li>What is History API?</li>
+						<li>Why do we use it?</li>
+						<li>What we used before?</li>
+						<li>How do we use it</li>
+					</ul>
+				</section>
+				<section>
+
+					<section>
+						<p>The <bold>HTML5 history API</bold></p>
+						<p>a standardized way to manipulate the browser history via script</p>
+					</section>
+
+
+					<section>
+						<figure style="height: 55vh;">
+							<img src="./img/console.png" alt="history object">
+						</figure>
+						<figcaption> The methods available to manipulate the browser’s history</figcaption>
+					</section>
+
+				</section>
+				<section>
+
+					<section>
+						<p>Why?</p>
+						<img src="./img/spa.jpg" alt="spa">
+					</section>
+
+					<section>
+						<h3>What types of spa?</h3>
+						<img src="./img/internal.png" alt="internal spa">
+						<p>An internal state SPA can only load the app’s entry</p>
+					</section>
+					<section>
+						<img src="./img/basic-spa.png" alt="basic spa">
+						<p>A location-based SPA render can immediately render the desired content<br></p>
+					</section>
+
+				</section>
+				<section>
+					<p>Thank You!</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
