@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Presentation</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -17,19 +17,23 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1 style="margin-bottom: 50px;">History API</h1>
-					<small>Created by <a href="https://github.com/yuliya-v" target="_blank">Yuliya Volchek</a></small>
+
+					<section>
+						<h1 style="margin-bottom: 50px;">History API</h1>
+						<small>Created by <a href="https://github.com/yuliya-v" target="_blank">Yuliya Volchek</a></small>
+					</section>
+
+					<section>
+						<ul>
+							<li style="line-height: 1.8em;">Navigation through the history</li>
+							<li style="line-height: 1.8em;">Manipulating the history</li>
+							<li style="line-height: 1.8em;">Using History API in SPA</li>
+						</ul>
+					</section>
+
 				</section>
 
-				<section>
-					<h2>Plan:</h2>
-					<ul>
-						<li>Basics</li>
-						<li>History API in SPA</li>
-						<li>pushState() and replaceState()</li>
-						<li>Routing</li>
-					</ul>
-				</section>
+				
 				<section>
 
 					<section>
@@ -65,6 +69,24 @@
 						<img src="./img/history.png" alt="history object">
 					</section>
 
+					<section>
+						<pre class="fragment"><code data-trim data-noescape>
+							history.go(2)
+						</code></pre>
+						<small class="fragment"> => go two pages forward</small>
+						<pre class="fragment"><code data-trim data-noescape>
+							history.go(-2)
+						</code></pre>
+						<small class="fragment"> => go two pages backward</small>
+						<pre class="fragment"><code data-trim data-noescape>
+							history.go(0)
+						</code></pre>
+						<pre class="fragment"><code data-trim data-noescape>
+							history.go()
+						</code></pre>
+						<small class="fragment"> => current page is refreshed</small>
+					</section>
+
 				</section>
 				<section>
 
@@ -80,13 +102,39 @@
 					</section>
 					<section>
 						<img src="./img/basic-spa.png" alt="basic spa">
-						<p>A location-based SPA render can immediately render the desired content</p>
+						<p>A location-based SPA can immediately render the desired content</p>
+					</section>
+
+					<section>
+						<h3>Using hash</h3>
+						<p>https://example.com/<span class="fragment highlight-red" data-fragment-index="1">#/users/</span></p>
+						<!-- <p>window.location.<span class="fragment highlight-blue" data-fragment-index="1">hash</span> => "#/users/"</p> -->
 					</section>
 
 				</section>
-				<!-- <section>
+
+				<section>
+					<h3>manipulating history</h3>
+					<pre class="fragment"><code data-trim data-noescape>
+						const state = { 'page_id': 1 }
+						const title = ''
+						const url = '/next-location'
+
+						history.pushState(state, title, url)
+							</code></pre>
+							<small class="fragment"> => adds an entry to the session history after the current entry</small>
+					<pre class="fragment"><code data-trim data-noescape>
+						const state = { 'page_id': 2 }
+						const title = ''
+						const url = '/next-location'
+						history.replaceState(state, title, url);
+							</code></pre>
+							<small class="fragment"> => replaces the current entry in the session history.</small>
+
+				</section>
+				<section>
 					<p>Thank You!</p>
-				</section> -->
+				</section>
 			</div>
 		</div>
 
