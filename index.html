@@ -19,11 +19,12 @@
 				<section>
 
 					<section>
-						<h1 style="margin-bottom: 50px;">History API</h1>
+						<h1 style="margin-bottom: 50px; font-size: 100px;">History API</h1>
 						<small>Created by <a href="https://github.com/yuliya-v" target="_blank">Yuliya Volchek</a></small>
 					</section>
 
 					<section>
+						<!-- <h3>history API</h3> -->
 						<ul>
 							<li style="line-height: 1.8em;">Navigation through the history</li>
 							<li style="line-height: 1.8em;">Manipulating the history</li>
@@ -36,25 +37,27 @@
 				
 				<section>
 
-					<section>
+					<!-- <section>
 						<h3>history API</h3>
-						<!-- <p>The history is a JavaScript object available in window object, which contains details about the browser session history of the tab</p> -->
+						<p>The history is a JavaScript object available in window object, which contains details about the browser session history of the tab</p>
 						<p>a standardized way to manipulate the browser history via script</p>
-					</section>
+					</section> -->
 
 
 					<section>
-						<h3>history object</h3>
+						<p>Access the History API</p>
+						<small>window.location</small>
 						<figure style="height: 55vh;">
 							<img src="./img/console.png" alt="history object">
 						</figure>
+						<pre class="fragment"><code data-trim data-noescape>
+							history.length //the number of pages in the history stack
+								</code></pre>
+								<!-- <small class="fragment"> => the number of pages in the history stack</small> -->
 					</section>
 
 					<section>
-						<pre class="fragment"><code data-trim data-noescape>
-					history.length
-						</code></pre>
-						<small class="fragment"> => the number of pages in the history stack</small>
+						<p>Navigate the history</p>
 						<pre class="fragment"><code data-trim data-noescape>
 					history.back()
 						</code></pre>
@@ -90,47 +93,120 @@
 				</section>
 				<section>
 
+					<!-- <section>
+						<p>URL (Uniform Resource Locator)</p>
+						<img src="./img/url.jpg" alt="url">
+					</section> -->
+
 					<section>
 						<p>MPA vs. SPA</p>
 						<img src="./img/spa.jpg" alt="spa">
 					</section>
 
 					<section>
-						<h3>What types of spa?</h3>
+						<h4>What types of spa?</h4>
 						<img src="./img/internal.png" alt="internal spa">
-						<p>An internal state SPA can only load the app’s entry</p>
+						<p>An <span style="color: rgb(8, 180, 8);">internal state</span> SPA can only load the app’s entry</p>
 					</section>
 					<section>
 						<img src="./img/basic-spa.png" alt="basic spa">
-						<p>A location-based SPA can immediately render the desired content</p>
+						<p>A <span style="color: rgb(8, 180, 8);">location-based SPA</span> can immediately render the desired content</p>
 					</section>
 
 					<section>
-						<h3>Using hash</h3>
-						<p>https://example.com/<span class="fragment highlight-red" data-fragment-index="1">#/users/</span></p>
+						<h3 style="font-size: 50px;">USING HASH</h3>
+						<p>https://example.com/<span class="fragment highlight-blue" data-fragment-index="1">#/users/</span></p>
 						<!-- <p>window.location.<span class="fragment highlight-blue" data-fragment-index="1">hash</span> => "#/users/"</p> -->
 					</section>
 
 				</section>
 
 				<section>
-					<h3>manipulating history</h3>
-					<pre class="fragment"><code data-trim data-noescape>
-						const state = { 'page_id': 1 }
-						const title = ''
-						const url = '/next-location'
 
-						history.pushState(state, title, url)
-							</code></pre>
-							<small class="fragment"> => adds an entry to the session history after the current entry</small>
-					<pre class="fragment"><code data-trim data-noescape>
-						const state = { 'page_id': 2 }
-						const title = ''
-						const url = '/next-location'
-						history.replaceState(state, title, url);
-							</code></pre>
-							<small class="fragment"> => replaces the current entry in the session history.</small>
+				
 
+				<section>
+					<p>Add an entry to the history</p>
+					<pre><code data-trim data-noescape>
+						history.pushState(state, title [,url])
+							</code></pre>
+							<!-- <small class="fragment"> => adds an entry to the session history after the current entry</small> -->
+					
+							<dl>
+								<dt><small>state</small></dt>
+								<dd><small>data which will be stored in history.state</small></dd>
+								<dt><small>title</small></dt>
+								<dd><small>Most browsers currently ignore this parameter</small></dd>
+								<dt><small>url</small></dt>
+								<dd><small>The new history entry's URL</small></dd>
+							</dl>
+
+				</section>
+				<section>
+					<p>Modify history entries</p>
+				<pre><code data-trim data-noescape>
+					history.replaceState({}, '', '/next-location');
+						</code></pre>
+						<small class="fragment"> => replaces the current entry in the session history.</small>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<p>Navigating in SPAs</p>
+						<pre><code data-trim data-noescape data-line-numbers="1|2|3|4">
+	
+								link.addEventListener('click', event => {
+									event.preventDefault();
+									history.pushState({}, '', '/about');
+									route();
+								}
+	
+						</code></pre>
+					</section>
+					<section>
+						<p>Route Matching</p>
+						<pre><code data-trim data-noescape>
+	
+							const routes = [
+								{ path: '/' },
+								{ path: '/about' },
+								{ path: '/settings' }
+							];
+
+					</code></pre>
+					<small class="fragment">1. comparing the current location against the router’s routes</small><br>
+					<small class="fragment">https://example.com/<span class="fragment highlight-blue" data-fragment-index="1">about/</span></small><br>
+					<small class="fragment">2. trigger a re-render of the application</small><br>
+					</section>
+					<section>
+						<p>Detecting back/forward button navigation</p>
+						<pre><code data-trim data-noescape>
+	
+							window.addEventListener('popstate', event => {
+								route();
+							});
+	
+						</code></pre>
+					</section>
+					<section>
+						<p>SPAs and the Server</p>
+						<small>The server should be configured to respond with 
+							index.html file if the requested resource doesn’t actually exist at the requested location</small>
+					</section>
+
+				</section>
+				
+
+				<section>
+					<!-- <p>Summary</p> -->
+					<p style="font-weight: 700;">The History API lets us<p>
+						<ul>
+							<li>interact with the browser history</li>
+							<li>trigger the browser navigation methods</li>
+							<li>change the address bar content</li>
+						</ul>
 				</section>
 				<section>
 					<p>Thank You!</p>
